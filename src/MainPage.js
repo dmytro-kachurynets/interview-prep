@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Typography, List, ListItem, ListItemText, ListSubheader, Divider } from '@mui/material';
 import { Link } from 'react-router-dom';
+import FrontendRoadmap from "./FrontendRoadmap";
 
 const MainPage = () => {
   const knowledgeAreas = [
@@ -18,7 +19,7 @@ const MainPage = () => {
 
   return (
     <Container maxWidth="md">
-      <Typography variant="h4" align="center" gutterBottom>
+      <Typography variant="h4" align="center" gutterBottom gutterBottom sx={{ color: '#1976d2', marginTop: '40px' }}>
         Technical Interview Preparation
       </Typography>
       <List

@@ -26,23 +26,27 @@ const JavaScriptPage = () => {
   const getCodeString = (codeField) => {
     if (codeField && codeField.content) {
       return codeField.content
-        .map((block) => block.content.map((node) => node.value).join(''))
-        .join('');
+        .map((block) =>
+          block.content
+            .map((node) => node.value.replace(/\\n/g, '\n'))
+            .join('')
+        )
+        .join('\n');
     }
     return '';
   };
 
   return (
     <Container maxWidth="md">
-      <Typography variant="h4" align="center" gutterBottom>
+      <Typography variant="h4" gutterBottom sx={{ color: '#1976d2', marginTop: '40px' }}>
         JavaScript Interview Questions
       </Typography>
       {questions.map((item) => (
         <Accordion key={item.sys.id}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />} sx={{ textAlign: 'left' }}>
             <Typography variant="h6">{item.fields.question}</Typography>
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails sx={{ textAlign: 'left' }}>
             {documentToReactComponents(item.fields.answer)}
             {item.fields.code && (
               <SyntaxHighlighter language="javascript" style={tomorrow}>
